@@ -97,52 +97,28 @@ SaveDataDir = "Saved Simulations"
 SaveSimulationsDirectory = "Saved Simulations"
 
 # Nom des fichiers .h5 (sans l'extension anydata.h5)
-Files = ["rh=20;rg=20.01",
-         #"rh=20;rg=21",
-         "rh=20;rg=25",
-         "rh=20;rg=30",
-         "rh=20;rg=35",
-         "rh=20;rg=40"
-         #"BS_SF=-0.1",
-        # "BS_SF=-0.02",
-         #"BS_SF=0.0",
-         #"rh=20;rg=20.01",
-        # "SoS_SF_-0.02",
-         # "SoS_ref",
-         # "SoS_SF_0.02"
-         #"SF=0.1"
-         # "MinMax",
-         # "MinMaxAux_quad_0.1",
-         # "MinMaxAux_quad_1",
-         # "Poly",
-         # "Quadra",
-         # "Quadra_Aux_0.0",
-         # "Quadra_Aux_0.5",
-         # "Quadra_Aux_1.0"
-         
+Files = [#"rh=20;rg=20.01",
+#          #"rh=20;rg=21",
+#          "rh=20;rg=25",
+#          "rh=20;rg=30",
+#          "rh=20;rg=35",
+#          "rh=20;rg=40"
+           "r=0.8;w=0.5",
+           "r=0.66;w=0.5",
+           "r=1;w=0.5"
+
          ]
 
 # Noms des simulations
 CaseNames = [#"rh=20;rg=20.01",
-             "B&S",
-             "r=0.8",
-             "r=0.66",
-             "r=0.57",
-             "r=0.5"
-           #  "BS_SF=-0.02",
-             #"BS_SF=0.0",
-             #"rh=20;rg=20.01",
-            # "SoS_SF_-0.02",
-             # "SoS_ref",
-             # "SoS_SF_0.02"
-             # "MinMax",
-             # "MinMaxAux_quad_0.1",
-             # "MinMaxAux_quad_1",
-             # "Poly",
-             # "Quadra",
-             # "Quadra_Aux_0.0",
-             # "Quadra_Aux_0.5",
-             # "Quadra_Aux_1.0"
+             # "B&S",
+             # "r=0.8",
+             # "r=0.66",
+             # "r=0.57",
+             # "r=0.5"
+             "r=0.8;w=0.5",
+             "r=0.66;w=0.5",
+             "r=1;w=0.5"
              ]
 
 Results = load_simulation_cases(SaveDataDir, Files, CaseNames, Variables)
