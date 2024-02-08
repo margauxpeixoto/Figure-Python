@@ -97,16 +97,16 @@ SaveDataDir = "Saved Simulations"
 SaveSimulationsDirectory = "Saved Simulations"
 
 # Nom des fichiers .h5 (sans l'extension anydata.h5)
-Files = [#"rh=20;rg=20.01",
-         # "rh=20;rg=21",
+Files = ["rh=20;rg=20.01",
+         #"rh=20;rg=21",
          "rh=20;rg=25",
-         # "rh=20;rg=30",
-         # "rh=20;rg=35",
-         # "rh=20;rg=40"
+         "rh=20;rg=30",
+         "rh=20;rg=35",
+         "rh=20;rg=40"
          #"BS_SF=-0.1",
         # "BS_SF=-0.02",
          #"BS_SF=0.0",
-         "rh=20;rg=20.01",
+         #"rh=20;rg=20.01",
         # "SoS_SF_-0.02",
          # "SoS_ref",
          # "SoS_SF_0.02"
@@ -124,14 +124,14 @@ Files = [#"rh=20;rg=20.01",
 
 # Noms des simulations
 CaseNames = [#"rh=20;rg=20.01",
-             # "rh=20;rg=21",
-             "rh=20;rg=25",
-             # "rh=20;rg=30",
-             # "rh=20;rg=35",
-             # "rh=20;rg=40"
+             "B&S",
+             "r=0.8",
+             "r=0.66",
+             "r=0.57",
+             "r=0.5"
            #  "BS_SF=-0.02",
              #"BS_SF=0.0",
-             "rh=20;rg=20.01",
+             #"rh=20;rg=20.01",
             # "SoS_SF_-0.02",
              # "SoS_ref",
              # "SoS_SF_0.02"

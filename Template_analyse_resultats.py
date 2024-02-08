@@ -199,14 +199,14 @@ AllMuscles_List = list(Variables["Muscles"].keys())
 # PremadeGraphs.muscle_graph_from_list(Results_Literature["Activity"], Muscle_Comp_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on="all", composante_y=["Max"], add_graph=True)
 
 #Comparaison entre les simulations des translations de la tête humérales
-# graph(Results, "Abduction", "HHT", "Translations antéro-postérieures", cases_on="all", composante_y=["AP"])
-# graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations antéro-postérieures", cases_on="all", composante_y=["AP"], add_graph=True)
+graph(Results, "Abduction", "HHT", "Translations antéro-postérieures", cases_on="all", composante_y=["AP"])
+graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations antéro-postérieures", cases_on="all", composante_y=["AP"], add_graph=True)
 
-# graph(Results, "Abduction", "HHT", "Translations inférieures-supérieures", cases_on="all", composante_y=["IS"])
-# graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations inférieures-supérieures", cases_on="all", composante_y=["IS"], add_graph=True)
+graph(Results, "Abduction", "HHT", "Translations inférieures-supérieures", cases_on="all", composante_y=["IS"])
+graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations inférieures-supérieures", cases_on="all", composante_y=["IS"], add_graph=True)
 
-# graph(Results, "Abduction", "HHT", "Translations medio-laterales", cases_on="all", composante_y=["ML"])
-# graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations medio-laterales", cases_on="all", composante_y=["ML"], add_graph=True)
+graph(Results, "Abduction", "HHT", "Translations medio-laterales", cases_on="all", composante_y=["ML"])
+graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations medio-laterales", cases_on="all", composante_y=["ML"], add_graph=True)
 
 #Comparaison des bras de levier
 PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "MomentArm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
@@ -215,13 +215,13 @@ PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Main,
 PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "MomentArm", "Muscles auxiliaires : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
 PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
 
-#Forces musculaire actives
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces actives des muscles", cases_on="all", composante_y=["Total"])
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fm", "Muscles auxiliaires : Forces actives des muscles", cases_on="all", composante_y=["Total"])
+# #Forces musculaire actives
+# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces actives des muscles", cases_on="all", composante_y=["Total"])
+# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fm", "Muscles auxiliaires : Forces actives des muscles", cases_on="all", composante_y=["Total"])
 
-#Forces musculaire passives
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fp", "Muscles principaux : Forces pasives des muscles", cases_on="all", composante_y=["Total"])
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fp", "Muscles auxiliaires : Forces passives des muscles", cases_on="all", composante_y=["Total"])
+# #Forces musculaire passives
+# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fp", "Muscles principaux : Forces pasives des muscles", cases_on="all", composante_y=["Total"])
+# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fp", "Muscles auxiliaires : Forces passives des muscles", cases_on="all", composante_y=["Total"])
 
 #Forces musculaire total
 PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Ft", "Muscles principaux : Forces des muscles total", cases_on="all", composante_y=["Total"])
