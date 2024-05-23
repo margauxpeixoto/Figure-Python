@@ -15,28 +15,30 @@ from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_da
 from Anybody_Package.Anybody_Graph import PremadeGraphs
 
 import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 # %% Contrôle de la taille des polices des graphiques
 
-# Contrôle de la taille de la police globale
-# matplotlib.rcParams.update({'font.size': 10})
+#Contrôle de la taille de la police globale
+matplotlib.rcParams.update({'font.size': 14})
 
-# Contrôle des tailles de chaque partie partie du graphique
-# Titre des cases des subplots
-# matplotlib.rcParams.update({'axes.titlesize': 10})
+#Contrôle des tailles de chaque partie partie du graphique
+#Titre des cases des subplots
+matplotlib.rcParams.update({'axes.titlesize': 14})
 
-# Titre du graphique
-# matplotlib.rcParams.update({'figure.titlesize': 10})
+#Titre du graphique
+matplotlib.rcParams.update({'figure.titlesize': 14})
 
-# Nom des axes
-# matplotlib.rcParams.update({'axes.labelsize': 10})
+#Nom des axes
+matplotlib.rcParams.update({'axes.labelsize': 14})
 
-# Graduations des axes
-# matplotlib.rcParams.update({'xtick.labelsize': 10})
-# matplotlib.rcParams.update({'ytick.labelsize': 10})
+#Graduations des axes
+matplotlib.rcParams.update({'xtick.labelsize': 14})
+matplotlib.rcParams.update({'ytick.labelsize': 14})
 
-# Légende
-# matplotlib.rcParams.update({'legend.fontsize': 10})
+#Légende
+matplotlib.rcParams.update({'legend.fontsize': 14})
 
 
 # %% Setup des couleurs et légendes
@@ -183,6 +185,15 @@ Muscles_Comp_Variation = ["Deltoideus anterior",
 AllMuscles_List = list(Variables["Muscles"].keys())
 
 
+#Calcul Instabilité Ratio
+for case in Results:
+    # Pour Shear où on additionne le shear IS et AP
+    Results[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+    # ratio = (IS + AP)/ML
+    #Results[case]["Instability Ratio"]["Total"] = (abs(Results[case]["Force_cisaillement"]["IS"]) + abs(Results[case]["Force_cisaillement"]["AP"])) / abs(Results[case]["Force_compression"]["ML"])
+    Results[case]["Instability Ratio"]["Total"] = np.sqrt((Results[case]["Force_cisaillement"]["IS"])**2 + (Results[case]["Force_cisaillement"]["AP"])**2)/ abs(Results[case]["Force_compression"]["ML"])
+
+
 # %% Graphiques
 
 # graphique normaux
@@ -216,27 +227,39 @@ PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", 
 PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
 
 # #Forces musculaire actives
-# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces actives des muscles", cases_on="all", composante_y=["Total"])
-# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fm", "Muscles auxiliaires : Forces actives des muscles", cases_on="all", composante_y=["Total"])
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces actives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fm", "Muscles auxiliaires : Forces actives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
 
-# #Forces musculaire passives
-# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fp", "Muscles principaux : Forces pasives des muscles", cases_on="all", composante_y=["Total"])
-# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fp", "Muscles auxiliaires : Forces passives des muscles", cases_on="all", composante_y=["Total"])
+#Forces musculaire passives
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fp", "Muscles principaux : Forces pasives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fp", "Muscles auxiliaires : Forces passives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
 
 #Forces musculaire total
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Ft", "Muscles principaux : Forces des muscles total", cases_on="all", composante_y=["Total"])
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Ft", "Muscles auxiliaires : Forces des muscles total", cases_on="all", composante_y=["Total"])
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Ft","Muscles principaux : Forces des muscles total", cases_on="all", composante_y=["Total"],hide_center_axis_labels=True)
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Ft", "Muscles auxiliaires : Forces des muscles total", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True, same_lim=True)
 
 #Activité musculaire
-PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : activité musculire", cases_on="all", composante_y=["Mean"])
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : activité musculire", cases_on="all", composante_y=["Mean"])
+PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : activité musculire", cases_on="all", composante_y=["Mean"], hide_center_axis_labels=True)
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : activité musculire", cases_on="all", composante_y=["Mean"], hide_center_axis_labels=True)
 
-#Force de reaction dans le chainon
-graph(Results, "Abduction", "ResultanteForce_BS", "Force resultante", cases_on="all", composante_y=["AP"])
-graph(Results_Literature["ForceContact"], "Abduction", "ForceContact", "Force résultante", cases_on="all", composante_y=["AP"], add_graph=True)
+#Force de reaction dans le chainon_amplitude
+graph(Results, "Abduction", "ResultanteForce_amplitude", "Amplitude de la force de Reaction (N)", cases_on="all")
 
-graph(Results, "Abduction", "ResultanteForce_BS", "Force resultante", cases_on="all", composante_y=["ML"])
-graph(Results_Literature["ForceContact"], "Abduction", "ForceContact", "Force résultante", cases_on="all", composante_y=["ML"], add_graph=True)
+#Force de reaction compression et cisaillement
+graph(Results, "Abduction", "Force_compression", "Shear forces in the anterior direction", cases_on="all", composante_y=["AP"])
+graph(Results, "Abduction", "Force_cisaillement", "Shear forces in the superior direction", cases_on="all", composante_y=["IS"])
+graph(Results, "Abduction", "Force_compression", "Compression forces", cases_on="all", composante_y=["ML"])
 
-graph(Results, "Abduction", "ResultanteForce_BS", "Force resultante", cases_on="all", composante_y=["IS"])
-graph(Results_Literature["ForceContact"], "Abduction", "ForceContact", "Force résultante", cases_on="all", composante_y=["IS"], add_graph=True)
+#Instability Ratio
+graph(Results, "Abduction", "Instability Ratio", "Instability Ratio", cases_on="all", composante_y=["Total"])
+
+# # Obtenir les axes des graphiques
+# axes = plt.gcf().get_axes()
+
+# # Masquer les noms des axes sur les graphiques non souhaités
+# for i, ax in enumerate(axes):
+#     if i % 3 == 0:  # Colonnes de gauche
+#         ax.set_xlabel('Votre xlabel')
+#     if i >= 6:  # Lignes du bas
+#         ax.set_ylabel('Votre ylabel')
+    # ax.tick_params(axis='both', which='both', length=0, width=0)

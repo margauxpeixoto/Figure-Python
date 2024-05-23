@@ -53,7 +53,7 @@ MuscleDictionary = {"Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4
                     }
 
 MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
-                            "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
+                            "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscles forces [Newton]"},
                             "Fp": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fp", "VariableDescription": "Force musculaire passive [Newton]"},
                             "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
@@ -65,15 +65,19 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             #                 "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                             #                 "combine_muscle_part_operations": ["total", "mean"]},
 
-                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Bras de levier du muscle [mm]",
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arms [mm]",
                                               "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
 # Variables
-VariableDictionary = {"Abduction": {"VariablePath": "Output.JointAngle", "VariableDescription": "Angle d'abduction [°]"},
+VariableDictionary = {"Abduction": {"VariablePath": "Output.JointAngleAbd", "VariableDescription": "Abduction angle [°]"},
+                      "Flexion": {"VariablePath": "Output.JointAngleFlx", "VariableDescription": "Flexion angle [°]"},
+                      "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Flexion temps [s]"},
                       "HHT": {"VariablePath": "Output.Jnt.HHT.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus [mm]", "MultiplyFactor": 1000, "SequenceComposantes": ["AP", "IS", "ML"]},
-                      "ResultanteForce": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GH_contact.Reaction.Fout", "VariableDescription": "Force de reaction [Newton]","MultiplyFactor": -1},
-                      "ResultanteForce_BS": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal", "VariableDescription": "Force de reaction [Newton]","MultiplyFactor": -1, "SequenceComposantes": ["ML", "IS", "AP"]},
+                       "ResultanteForce_amplitude": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GH_contact.Reaction.Fout", "VariableDescription": "Force de reaction [Newton]", "MultiplyFactor": -1},
+                       "Force_compression": {"VariablePath": "Output.HumReacForce.Val", "VariableDescription": "Sher forces [Newton]", "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "Force_cisaillement": {"VariablePath": "Output.HumReacForce.Val", "VariableDescription": "Sher forces [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]}
+                      #"ResultanteForce_BS": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal", "VariableDescription": "Force de reaction [Newton]","MultiplyFactor": -1, "SequenceComposantes": ["ML", "IS", "AP"]},
                       }
 
 
@@ -97,28 +101,24 @@ SaveDataDir = "Saved Simulations"
 SaveSimulationsDirectory = "Saved Simulations"
 
 # Nom des fichiers .h5 (sans l'extension anydata.h5)
-Files = [#"rh=20;rg=20.01",
-#          #"rh=20;rg=21",
-#          "rh=20;rg=25",
-#          "rh=20;rg=30",
-#          "rh=20;rg=35",
-#          "rh=20;rg=40"
-           "r=0.8;w=0.5",
-           "r=0.66;w=0.5",
-           "r=1;w=0.5"
+Files = [
+         # "B&S_0Kg",
+         "CSA_28",
+         "CSA_33",
+         "CSA_38"
+        
+         
+           # "r=0.66;w=0.5",
+           # "r=1;w=0.5"
 
          ]
 
 # Noms des simulations
-CaseNames = [#"rh=20;rg=20.01",
-             # "B&S",
-             # "r=0.8",
-             # "r=0.66",
-             # "r=0.57",
-             # "r=0.5"
-             "r=0.8;w=0.5",
-             "r=0.66;w=0.5",
-             "r=1;w=0.5"
+CaseNames = ["CSA_28",
+             "CSA_33",
+             "CSA_38"
+             
+          
              ]
 
 Results = load_simulation_cases(SaveDataDir, Files, CaseNames, Variables)
