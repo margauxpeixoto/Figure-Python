@@ -73,10 +73,10 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
 VariableDictionary = {"Abduction": {"VariablePath": "Output.JointAngleAbd", "VariableDescription": "Abduction angle [°]"},
                       "Flexion": {"VariablePath": "Output.JointAngleFlx", "VariableDescription": "Flexion angle [°]"},
                       "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Flexion temps [s]"},
-                      "HHT": {"VariablePath": "Output.Jnt.HHT.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus [mm]", "MultiplyFactor": 1000, "SequenceComposantes": ["AP", "IS", "ML"]},
+                      "HHT": {"VariablePath": "Output.Jnt.HHT.Pos", "VariableDescription": "Humeral head displacement [mm]", "MultiplyFactor": 1000, "SequenceComposantes": ["AP", "IS", "ML"]},
                        "ResultanteForce_amplitude": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GH_contact.Reaction.Fout", "VariableDescription": "Force de reaction [Newton]", "MultiplyFactor": -1},
-                       "Force_compression": {"VariablePath": "Output.HumReacForce.Val", "VariableDescription": "Sher forces [Newton]", "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
-                       "Force_cisaillement": {"VariablePath": "Output.HumReacForce.Val", "VariableDescription": "Sher forces [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]}
+                       "Force_compression": {"VariablePath": "Output.HumReacForce.Val", "VariableDescription": "Compression forces [Newton]", "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "Force_cisaillement": {"VariablePath": "Output.HumReacForce.Val", "VariableDescription": "Shear forces [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]}
                       #"ResultanteForce_BS": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal", "VariableDescription": "Force de reaction [Newton]","MultiplyFactor": -1, "SequenceComposantes": ["ML", "IS", "AP"]},
                       }
 
@@ -103,9 +103,9 @@ SaveSimulationsDirectory = "Saved Simulations"
 # Nom des fichiers .h5 (sans l'extension anydata.h5)
 Files = [
          # "B&S_0Kg",
-         "CSA_28",
-         "CSA_33",
-         "CSA_38"
+         "Abd_r=1",
+         "Abd_r=0.8",
+         "Abd_r=0.6"
         
          
            # "r=0.66;w=0.5",
@@ -114,9 +114,9 @@ Files = [
          ]
 
 # Noms des simulations
-CaseNames = ["CSA_28",
-             "CSA_33",
-             "CSA_38"
+CaseNames = ["r=1",
+             "r=0.8",
+             "r=0.6"
              
           
              ]

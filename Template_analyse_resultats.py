@@ -71,8 +71,12 @@ SimulationsLineStyleDictionary = {"Dal Maso P1": {"marker": "+", "markersize": 1
                                   "Nakajima et al., 1999": {"marker": "1", "markersize": 10,"linestyle": ""},
                                   "Poppen and Walker, 1978": {"marker": "2", "markersize": 10,"linestyle": ""},
                                   "Otis et al., 1994": {"marker": "3", "markersize": 10,"linestyle": ""},
-                                  "DeWilde et al., 2002": {"marker": "X", "markersize": 6,"linestyle": ""}
+                                  "DeWilde et al., 2002": {"marker": "X", "markersize": 6,"linestyle": ""},
+                                  "r=1": {"color": "darkslateblue", "linestyle": "solid"},
+                                  "r=0.8": {"color": "mediumslateblue", "linestyle": "dashed"},
+                                  "r=0.6": {"color": "mediumorchid", "linestyle": "dashdot"}
                                   }
+
 
 # Texte de description des simulations dans les légendes
 SimulationDescriptionDictionary = {"NOM_DE_LA_SIMULATION_1": "TEXTE_DE_DESCRIPTION_1",
@@ -189,7 +193,7 @@ AllMuscles_List = list(Variables["Muscles"].keys())
 for case in Results:
     # Pour Shear où on additionne le shear IS et AP
     Results[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    # ratio = (IS + AP)/ML
+    # ratio = norme(Ap, IS)/ML
     #Results[case]["Instability Ratio"]["Total"] = (abs(Results[case]["Force_cisaillement"]["IS"]) + abs(Results[case]["Force_cisaillement"]["AP"])) / abs(Results[case]["Force_compression"]["ML"])
     Results[case]["Instability Ratio"]["Total"] = np.sqrt((Results[case]["Force_cisaillement"]["IS"])**2 + (Results[case]["Force_cisaillement"]["AP"])**2)/ abs(Results[case]["Force_compression"]["ML"])
 
@@ -211,13 +215,13 @@ for case in Results:
 
 #Comparaison entre les simulations des translations de la tête humérales
 graph(Results, "Abduction", "HHT", "Translations antéro-postérieures", cases_on="all", composante_y=["AP"])
-graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations antéro-postérieures", cases_on="all", composante_y=["AP"], add_graph=True)
+graph(Results_Literature["Translation"], "Abduction", "Translation", "Posterior displacement", cases_on="all", composante_y=["AP"], add_graph=True)
 
 graph(Results, "Abduction", "HHT", "Translations inférieures-supérieures", cases_on="all", composante_y=["IS"])
-graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations inférieures-supérieures", cases_on="all", composante_y=["IS"], add_graph=True)
+graph(Results_Literature["Translation"], "Abduction", "Translation", "Superior displacement", cases_on="all", composante_y=["IS"], add_graph=True)
 
 graph(Results, "Abduction", "HHT", "Translations medio-laterales", cases_on="all", composante_y=["ML"])
-graph(Results_Literature["Translation"], "Abduction", "Translation", "Translations medio-laterales", cases_on="all", composante_y=["ML"], add_graph=True)
+graph(Results_Literature["Translation"], "Abduction", "Translation", "Medial displacement", cases_on="all", composante_y=["ML"], add_graph=True)
 
 #Comparaison des bras de levier
 PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "MomentArm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
