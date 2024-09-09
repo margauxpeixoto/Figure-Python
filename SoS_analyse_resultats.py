@@ -17,6 +17,7 @@ from Anybody_Package.Anybody_Graph import PremadeGraphs
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 # %% Contrôle de la taille des polices des graphiques
 
@@ -185,6 +186,18 @@ Muscles_Comp_Variation = ["Deltoideus anterior",
                           "Deltoideus lateral",
                           "Deltoideus posterior"
                           ]
+# Liste des muscles avec une seule surface de wrapping
+muscle_surface = ["Supraspinatus", 
+                 "Infraspinatus", 
+                 "Deltoideus anterior",
+                 "Deltoideus lateral",
+                 "Deltoideus posterior"
+                 ]
+
+# Liste des muscles avec plusieurs surface de wrapping
+muscle_multisurface = ["Deltoideus posterior",
+                       "Subscapularis"
+                       ]
 
 AllMuscles_List = list(Variables["Muscles"].keys())
 
@@ -223,12 +236,12 @@ graph(Results_Literature["Translation"], "Abduction", "Translation", "Superior d
 graph(Results, "Abduction", "HHT", "Translations medio-laterales", cases_on="all", composante_y=["ML"])
 graph(Results_Literature["Translation"], "Abduction", "Translation", "Medial displacement", cases_on="all", composante_y=["ML"], add_graph=True)
 
-#Comparaison des bras de levier
-PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "MomentArm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
-PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Main, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
+# #Comparaison des bras de levier
+# PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "MomentArm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
+# PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Main, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
 
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "MomentArm", "Muscles auxiliaires : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
-PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
+# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "MomentArm", "Muscles auxiliaires : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
+# PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
 
 # # #Forces musculaire actives
 # PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces actives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
@@ -238,36 +251,72 @@ PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, 
 # PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fp", "Muscles principaux : Forces pasives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
 # PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Fp", "Muscles auxiliaires : Forces passives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
 
-#Forces musculaire total
+# #Forces musculaire total
 PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Ft","Muscles principaux : Forces des muscles total", cases_on="all", composante_y=["Total"],hide_center_axis_labels=True)
 PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Ft", "Muscles auxiliaires : Forces des muscles total", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True, same_lim=True)
 
-# #Forces musculaire à l'insertion
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "F insertion", "Muscles principaux : Forces aux insertions", cases_on="all", composante_y=["AP"], hide_center_axis_labels=True)
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "F insertion", "Muscles auxiliaires : Forces aux insertions", cases_on="all", composante_y=["AP"], hide_center_axis_labels=True)
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "F insertion", "Muscles principaux : Forces aux insertions", cases_on="all", composante_y=["IS"], hide_center_axis_labels=True)
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "F insertion", "Muscles auxiliaires : Forces aux insertions", cases_on="all", composante_y=["IS"], hide_center_axis_labels=True)
+#Contribution musculaires IS
+graph(Results, "Abduction", "Ctb infra", "Muscles contribution IS", cases_on="all", composante_y=["IS"], subplot={"dimension": [2, 3], "number": 1}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb supra", "Muscles contribution IS", cases_on="all", composante_y=["IS"], subplot={"dimension": [2, 3], "number": 2}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb subscap", "Muscles contribution IS", cases_on="all", composante_y=["IS"], subplot={"dimension": [2, 3], "number": 3}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_ant", "Muscles contribution IS", cases_on="all", composante_y=["IS"], subplot={"dimension": [2, 3], "number": 4}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_lat", "Muscles contribution IS", cases_on="all", composante_y=["IS"], subplot={"dimension": [2, 3], "number": 5}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_post", "Muscles contribution IS", cases_on="all", composante_y=["IS"], subplot={"dimension": [2, 3], "number": 6}, figsize=[20, 10])
 
-# #Forces musculaire à l'origine
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "F origin", "Muscles principaux : Forces aux origines", cases_on="all", composante_y=["AP"], hide_center_axis_labels=True)
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "F origin", "Muscles auxiliaires : Forces aux origines", cases_on="all", composante_y=["AP"], hide_center_axis_labels=True)
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "F origin", "Muscles principaux : Forces aux origines", cases_on="all", composante_y=["IS"], hide_center_axis_labels=True)
-PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "F origin", "Muscles auxiliaires : Forces aux origines", cases_on="all", composante_y=["IS"], hide_center_axis_labels=True)
+#Contribution musculaires AP
+graph(Results, "Abduction", "Ctb infra", "Muscles contribution AP", cases_on="all", composante_y=["AP"], subplot={"dimension": [2, 3], "number": 1}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb supra", "Muscles contribution AP", cases_on="all", composante_y=["AP"], subplot={"dimension": [2, 3], "number": 2}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb subscap", "Muscles contribution AP", cases_on="all", composante_y=["AP"], subplot={"dimension": [2, 3], "number": 3}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_ant", "Muscles contribution AP", cases_on="all", composante_y=["AP"], subplot={"dimension": [2, 3], "number": 4}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_lat", "Muscles contribution AP", cases_on="all", composante_y=["AP"], subplot={"dimension": [2, 3], "number": 5}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_post", "Muscles contribution AP", cases_on="all", composante_y=["AP"], subplot={"dimension": [2, 3], "number": 6}, figsize=[20, 10])
+
+#Contribution musculaires ML
+graph(Results, "Abduction", "Ctb infra", "Muscles contribution ML", cases_on="all", composante_y=["ML"], subplot={"dimension": [2, 3], "number": 1}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb supra", "Muscles contribution ML", cases_on="all", composante_y=["ML"], subplot={"dimension": [2, 3], "number": 2}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb subscap", "Muscles contribution ML", cases_on="all", composante_y=["ML"], subplot={"dimension": [2, 3], "number": 3}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_ant", "Muscles contribution ML", cases_on="all", composante_y=["ML"], subplot={"dimension": [2, 3], "number": 4}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_lat", "Muscles contribution ML", cases_on="all", composante_y=["ML"], subplot={"dimension": [2, 3], "number": 5}, figsize=[20, 10])
+graph(Results, "Abduction", "Ctb delt_post", "Muscles contribution ML", cases_on="all", composante_y=["ML"], subplot={"dimension": [2, 3], "number": 6}, figsize=[20, 10])
+
+"""Script pour les graphiques"""
+
+from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
+
+muscle_list = ["Deltoid anterior", "Deltoid lateral", "Deltoid posterior", "Supraspinatus", "Infraspinatus", "Subscapularis"]
+for composante in ["AP", "IS", "ML"]:
+    
+    ForceMeasure_bar_plot(Results, "", muscle_list, abduction_angle_index=0, composante=composante, cases_on="all", stacked=False, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="10° abduction")
+    ForceMeasure_bar_plot(Results, "", muscle_list, abduction_angle_index=46, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
+    ForceMeasure_bar_plot(Results, f"Forces {composante}", muscle_list, abduction_angle_index=69, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="130° abduction", legend_position="center left")
+
+total_force_AP = (Results[case]["ForceMeasure Infraspinatus"]["AP"])+(Results[case]["ForceMeasure Supraspinatus"]["AP"])+(Results[case]["ForceMeasure Subscapularis"]["AP"])+(Results[case]["ForceMeasure Deltoid anterior"]["AP"])+(Results[case]["ForceMeasure Deltoid posterior"]["AP"])+(Results[case]["ForceMeasure Deltoid lateral"]["AP"])
+
+
+#Forces surfaces
+# PremadeGraphs.graph_all_muscle_fibers(Results, muscle_surface, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["AP"])
+# PremadeGraphs.graph_all_muscle_fibers(Results, muscle_surface, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["IS"])
+# PremadeGraphs.graph_all_muscle_fibers(Results, muscle_surface, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["ML"])
+
+#Forces multi surfaces
+# PremadeGraphs.graph_all_muscle_fibers(Results, muscle_multisurface, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["AP"])
+# PremadeGraphs.graph_all_muscle_fibers(Results, muscle_multisurface, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["IS"])
+# PremadeGraphs.graph_all_muscle_fibers(Results, muscle_multisurface, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["ML"])
 
 #Activité musculaire
 # PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : activité musculire", cases_on="all", composante_y=["Mean"], hide_center_axis_labels=True)
 # PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : activité musculire", cases_on="all", composante_y=["Mean"], hide_center_axis_labels=True)
 
 #Force de reaction dans le chainon_amplitude
-graph(Results, "Abduction", "ResultanteForce_amplitude", "Amplitude de la force de Reaction (N)", cases_on="all")
+# graph(Results, "Abduction", "ResultanteForce_amplitude", "Amplitude de la force de Reaction (N)", cases_on="all")
 
 #Force de reaction compression et cisaillement
-graph(Results, "Abduction", "Force_compression", "Shear forces in the anterior direction", cases_on="all", composante_y=["AP"])
+graph(Results, "Abduction", "Force_cisaillement", "Shear forces in the anterior direction", cases_on="all", composante_y=["AP"])
 graph(Results, "Abduction", "Force_cisaillement", "Shear forces in the superior direction", cases_on="all", composante_y=["IS"])
 graph(Results, "Abduction", "Force_compression", "Compression forces", cases_on="all", composante_y=["ML"])
 
 #Instability Ratio
-graph(Results, "Abduction", "Instability Ratio", "Instability Ratio", cases_on="all", composante_y=["Total"])
+# graph(Results, "Abduction", "Instability Ratio", "Instability Ratio", cases_on="all", composante_y=["Total"])
 
 # # Obtenir les axes des graphiques
 # axes = plt.gcf().get_axes()
