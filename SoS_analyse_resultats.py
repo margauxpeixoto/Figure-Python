@@ -288,7 +288,7 @@ for composante in ["AP", "IS", "ML"]:
     
     ForceMeasure_bar_plot(Results, "", muscle_list, data_index=0, composante=composante, cases_on="all", stacked=False, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="10° abduction")
     ForceMeasure_bar_plot(Results, "", muscle_list, data_index=46, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
-    ForceMeasure_bar_plot(Results, f"Forces {composante}", muscle_list, abduction_angle_index=69, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="130° abduction", legend_position="center left")
+    ForceMeasure_bar_plot(Results, f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="130° abduction", legend_position="center left")
 
 total_force_AP = (Results[case]["ForceMeasure Infraspinatus"]["AP"])+(Results[case]["ForceMeasure Supraspinatus"]["AP"])+(Results[case]["ForceMeasure Subscapularis"]["AP"])+(Results[case]["ForceMeasure Deltoid anterior"]["AP"])+(Results[case]["ForceMeasure Deltoid posterior"]["AP"])+(Results[case]["ForceMeasure Deltoid lateral"]["AP"])
 
