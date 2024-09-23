@@ -85,14 +85,14 @@ VariableDictionary = {"Abduction": {"VariablePath": "Output.JointAngleAbd", "Var
                        "Ctb delt_ant": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_ant.F", "VariableDescription": "Force deltoid anterior [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
                        "Ctb delt_lat": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_lat.F", "VariableDescription": "Force deltoid lateral [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
                        "Ctb delt_post": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_post.F", "VariableDescription": "Force deltoid posterior [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Infraspinatus": {"VariablePath": "Output._Main.Model.ForceMeasure_infra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Supraspinatus": {"VariablePath": "Output._Main.Model.ForceMeasure_supra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Subscapularis": {"VariablePath": "Output._Main.Model.ForceMeasure_subscap.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Biceps long head": {"VariablePath": "Output._Main.Model.ForceMeasure_biceps_lh.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Deltoid anterior": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_ant.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Deltoid posterior": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_post.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Deltoid lateral": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_lat.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                       "ForceMeasure Others": {"VariablePath": "Output._Main.Model.ForceMeasure_others.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                       "ForceMeasure Infraspinatus": {"VariablePath": "Output._Main.Model.ForceMeasure_infra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Supraspinatus": {"VariablePath": "Output._Main.Model.ForceMeasure_supra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Subscapularis": {"VariablePath": "Output._Main.Model.ForceMeasure_subscap.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Biceps long head": {"VariablePath": "Output._Main.Model.ForceMeasure_biceps_lh.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Deltoid anterior": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_ant.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Deltoid posterior": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_post.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Deltoid lateral": {"VariablePath": "Output._Main.Model.ForceMeasure_delt_lat.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                       "ForceMeasure Others": {"VariablePath": "Output._Main.Model.ForceMeasure_others.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
                        #"ResultanteForce_BS": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal", "VariableDescription": "Force de reaction [Newton]","MultiplyFactor": -1, "SequenceComposantes": ["ML", "IS", "AP"]},
                       }
 
@@ -118,9 +118,9 @@ SaveSimulationsDirectory = "Saved Simulations"
 
 # Nom des fichiers .h5 (sans l'extension anydata.h5)
 Files = [
-          "supra_-20",
-         "supra_0",
-          "supra_20"
+          "supra_-20mm",
+         "supra_0mm",
+          "supra_20mm"
               #  "r=1",
               #  "r=0.8",
               # "r=0.6"
