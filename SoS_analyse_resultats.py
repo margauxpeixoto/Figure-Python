@@ -11,6 +11,7 @@ from Anybody_Package.Anybody_Graph.GraphFunctions import define_COP_contour
 
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cases
 from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_data
+from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot_direction
 
 from Anybody_Package.Anybody_Graph import PremadeGraphs
 
@@ -287,16 +288,28 @@ graph(Results, "Abduction", "Ctb delt_post", "Muscles contribution ML", cases_on
 from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
 
 muscle_list = ["Deltoid anterior", "Deltoid lateral", "Biceps long head", "Deltoid posterior", "Supraspinatus", "Infraspinatus", "Subscapularis", "Others"]
-for composante in ["AP", "IS", "ML"]:
+for composante in ["AP", "IS", "ML"]: 
     
-    ForceMeasure_bar_plot(Results, "", muscle_list, data_index=0, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 1}, subplot_title="10° abduction",ylim = [-35, 125])
-    ForceMeasure_bar_plot(Results, "", muscle_list, data_index=30, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 2}, subplot_title="50° abduction",ylim = [-35, 125])
-    ForceMeasure_bar_plot(Results, "", muscle_list, data_index=46, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 3}, subplot_title="90° abduction",ylim = [-35, 125])
+    ForceMeasure_bar_plot(Results,"ForceMeasure", "", muscle_list, data_index=0, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 1}, subplot_title="10° abduction",ylim = [-35, 125])
+    ForceMeasure_bar_plot(Results, "ForceMeasure", "", muscle_list, data_index=30, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 2}, subplot_title="50° abduction",ylim = [-35, 125])
+    ForceMeasure_bar_plot(Results, "ForceMeasure", "", muscle_list, data_index=46, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 3}, subplot_title="90° abduction",ylim = [-35, 125])
     #ForceMeasure_bar_plot(Results, f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="130° abduction", legend_position="center left")
-    ForceMeasure_bar_plot(Results, f"Compression forces", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 4}, subplot_title="130° abduction", legend_position="center left",ylim = [-35, 125])
+    ForceMeasure_bar_plot(Results, "ForceMeasure", f"Compression forces", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 4}, subplot_title="130° abduction", legend_position="center left",ylim = [-35, 125])
+    
+    ForceMeasure_bar_plot(Results,"MomentMeasure", "", muscle_list, data_index=0, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 1}, subplot_title="10° abduction",ylim = [-35, 125])
+    ForceMeasure_bar_plot(Results, "MomentMeasure", "", muscle_list, data_index=30, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 2}, subplot_title="50° abduction",ylim = [-35, 125])
+    ForceMeasure_bar_plot(Results, "MomentMeasure", "", muscle_list, data_index=46, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 3}, subplot_title="90° abduction",ylim = [-35, 125])
+    #ForceMeasure_bar_plot(Results, f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="130° abduction", legend_position="center left")
+    ForceMeasure_bar_plot(Results, "MomentMeasure", f"Compression forces", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 4}, subplot_title="130° abduction", legend_position="center left",ylim = [-35, 125])
 
 
-total_force_AP = (Results[case]["ForceMeasure Infraspinatus"]["AP"])+(Results[case]["ForceMeasure Supraspinatus"]["AP"])+(Results[case]["ForceMeasure Subscapularis"]["AP"])+(Results[case]["ForceMeasure Deltoid anterior"]["AP"])+(Results[case]["ForceMeasure Deltoid posterior"]["AP"])+(Results[case]["ForceMeasure Deltoid lateral"]["AP"])
+ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "", muscle_list, data_index=0, cases_on="all", figsize=[30, 10])
+ForceMeasure_bar_plot_direction(Results, "ForceMeasure","", muscle_list, data_index=30, cases_on="all", figsize=[30, 10])
+ForceMeasure_bar_plot_direction(Results, "ForceMeasure","", muscle_list, data_index=46, cases_on="all", figsize=[30, 10])
+# ForceMeasure_bar_plot(Results, "ForceMeasure",f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="130° abduction", legend_position="center left")
+ForceMeasure_bar_plot_direction(Results,"ForceMeasure", f"Compression forces", muscle_list, data_index=69, cases_on="all", figsize=[30, 10], stacked=False, legend_position="center left")
+
+#total_force_AP = (Results[case]["ForceMeasure Infraspinatus"]["AP"])+(Results[case]["ForceMeasure Supraspinatus"]["AP"])+(Results[case]["ForceMeasure Subscapularis"]["AP"])+(Results[case]["ForceMeasure Deltoid anterior"]["AP"])+(Results[case]["ForceMeasure Deltoid posterior"]["AP"])+(Results[case]["ForceMeasure Deltoid lateral"]["AP"])
 
 
 #Forces surfaces
