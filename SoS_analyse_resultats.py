@@ -262,11 +262,11 @@ graph(Results, "Abduction", "HHT", "Translations medio-laterales", cases_on="all
 graph(Results_Literature["Translation"], "Abduction", "Translation", "Medial displacement", cases_on="all", composante_y=["ML"], add_graph=True, ylim = [-4, 10])
 
 # #Comparaison des bras de levier
-# PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "MomentArm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
-# PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Main, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
+PremadeGraphs.muscle_graph_from_list(Results,  Muscles_Main, [3, 3], "Abduction", "MomentArm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
+PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Main, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
 
-# PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "MomentArm", "Muscles auxiliaires : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
-# PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
+PremadeGraphs.muscle_graph_from_list(Results, Muscles_Aux, [3, 3], "Abduction", "MomentArm", "Muscles auxiliaires : Bras de levier des muscles", cases_on="all", composante_y=["Mean"])
+PremadeGraphs.muscle_graph_from_list(Results_Literature["BL"], Muscle_Comp_Aux, [3, 3], "Abduction", "Moment arm", "Muscles principaux : Bras de levier des muscles", cases_on="all", composante_y=["Total"], add_graph=True)
 
 # # #Forces musculaire actives
 # PremadeGraphs.muscle_graph_from_list(Results, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces actives des muscles", cases_on="all", composante_y=["Total"], hide_center_axis_labels=True)
@@ -306,10 +306,10 @@ graph(Results, "Abduction", "Ctb delt_post", "Muscles contribution ML", cases_on
 
 """Script pour les graphiques"""
 
-from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
+# from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
 
-muscle_list = ["Deltoid anterior", "Deltoid lateral", "Biceps long head", "Deltoid posterior", "Supraspinatus", "Infraspinatus", "Subscapularis", "Others"]
-for composante in ["AP", "IS", "ML"]: 
+# muscle_list = ["Deltoid anterior", "Deltoid lateral", "Biceps long head", "Deltoid posterior", "Supraspinatus", "Infraspinatus", "Subscapularis", "Others"]
+# for composante in ["AP", "IS", "ML"]: 
     
     # ForceMeasure_bar_plot(Results,"ForceMeasure", "", muscle_list, data_index=0, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 1}, subplot_title="10° abduction",ylim = [-35, 125])
     # ForceMeasure_bar_plot(Results, "ForceMeasure", "", muscle_list, data_index=30, composante=composante, cases_on="all", stacked=False, figsize=[10, 20], subplot={"dimension": [4, 1], "number": 2}, subplot_title="50° abduction",ylim = [-35, 125])
@@ -324,15 +324,15 @@ for composante in ["AP", "IS", "ML"]:
     # ForceMeasure_bar_plot(Results, "MomentMeasure", f"Compression forces", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[10, 30], subplot={"dimension": [4, 1], "number": 4}, subplot_title="130° abduction", legend_position="center left",ylim = [-35, 125])
 
 
-    ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "10° of abduction", muscle_list, data_index=0, cases_on="all", stacked=False, figsize=[8, 12], subplot=[4,1,1], same_lim=True, hide_center_axis_labels=True, bar_label=False)
-    ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "45° of abduction", muscle_list, data_index=20, cases_on="all", stacked=False, figsize=[8, 12], subplot=[4,1,2], same_lim=True, hide_center_axis_labels=True, bar_label=False)
-    ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "90° of abduction", muscle_list, data_index=46, cases_on="all", stacked=False, figsize=[8, 12], subplot=[4,1,3], same_lim=True, hide_center_axis_labels=True, bar_label=False)
-    ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "130° of abduction", muscle_list, data_index=69, cases_on="all", stacked=False, figsize=[8, 12],subplot=[4,1,4],  same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "10° of abduction", muscle_list, data_index=0, cases_on="all", stacked=False, figsize=[8, 12], subplot=[4,1,1], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "45° of abduction", muscle_list, data_index=20, cases_on="all", stacked=False, figsize=[8, 12], subplot=[4,1,2], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "90° of abduction", muscle_list, data_index=46, cases_on="all", stacked=False, figsize=[8, 12], subplot=[4,1,3], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "ForceMeasure", "130° of abduction", muscle_list, data_index=69, cases_on="all", stacked=False, figsize=[8, 12],subplot=[4,1,4],  same_lim=True, hide_center_axis_labels=True, bar_label=False)
     
-    ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "10° of abduction", muscle_list, data_index=0, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
-    ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "45° of abduction", muscle_list, data_index=20, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
-    ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "90° of abduction", muscle_list, data_index=46, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
-    ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "130° of abduction", muscle_list, data_index=69, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "10° of abduction", muscle_list, data_index=0, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "45° of abduction", muscle_list, data_index=20, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "90° of abduction", muscle_list, data_index=46, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
+    # ForceMeasure_bar_plot_direction(Results, "MomentMeasure", "130° of abduction", muscle_list, data_index=69, cases_on="all", stacked=False, figsize=[8, 12], same_lim=True, hide_center_axis_labels=True, bar_label=False)
 
 #total_force_AP = (Results[case]["ForceMeasure Infraspinatus"]["AP"])+(Results[case]["ForceMeasure Supraspinatus"]["AP"])+(Results[case]["ForceMeasure Subscapularis"]["AP"])+(Results[case]["ForceMeasure Deltoid anterior"]["AP"])+(Results[case]["ForceMeasure Deltoid posterior"]["AP"])+(Results[case]["ForceMeasure Deltoid lateral"]["AP"])
 

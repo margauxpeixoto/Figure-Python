@@ -53,9 +53,9 @@ MuscleDictionary = {"Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4
                     }
 
 # Pour nouveau wrapping supra
-MuscleDictionary_MySupraspinatusWrapping = {"Deltoid lateral": ["deltoideus_lateral", "_part_", [1, 4]],
-                                            "Deltoid posterior": ["deltoideus_posterior", "_part_", [1, 4]],
-                                            "Deltoid anterior": ["deltoideus_anterior", "_part_", [1, 4]],
+MuscleDictionary_MySupraspinatusWrapping = {"Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4]],
+                                            "Deltoideus posterior": ["deltoideus_posterior", "_part_", [1, 4]],
+                                            "Deltoideus anterior": ["deltoideus_anterior", "_part_", [1, 4]],
                                             "Supraspinatus": ["My_supraspinatus", "_", [1, 6]],        # On charge les muscles My_supraspinatus
                                             "Infraspinatus": ["infraspinatus", "_", [1, 6]],
                                             "Infraspinatus superior": ["infraspinatus", "_", [1, 3]],
@@ -105,8 +105,8 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             # "F_muscle_hum": {"MuscleFolderPath": "Output.Model", "AnybodyVariableName": "ForceMeasure_infra", "VariableDescription": "Force infraspinatus on humerus [N]",
                             #                   "SequenceComposantes": ["AP", "IS", "ML"]},
                             "LmtDot": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "LmtDot", "VariableDescription": "Lmtdot [ms-1]", "combine_muscle_part_operations": ["mean"]},
-                            # "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArmRotX", "VariableDescription": "Moment arms [mm]",
-                            #                   "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arms [mm]",
+                                              "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
 # Variables
@@ -175,7 +175,8 @@ Files = [
          # "r=1",
          # "r=0.8",
          # "r=0.6"
-        "new_wrap"
+        "nw_largeCSA",
+        "nw_normalCSA"
         # "old_wrap"
 
          ]
@@ -191,7 +192,8 @@ CaseNames = [
                #  "r=1",
                #  "r=0.8",
                # "r=0.6"
-                "new_wrap"
+               "nw_largeCSA",
+               "nw_normalCSA"
                # "old_wrap"
           
              ]
