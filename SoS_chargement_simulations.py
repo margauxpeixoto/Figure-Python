@@ -52,6 +52,44 @@ MuscleDictionary = {"Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4
                     "Coracobrachialis": ["coracobrachialis", "_", [1, 6]]
                     }
 
+# Pour nouveau wrapping supra
+MuscleDictionary_MySupraspinatusWrapping = {"Deltoid lateral": ["deltoideus_lateral", "_part_", [1, 4]],
+                                            "Deltoid posterior": ["deltoideus_posterior", "_part_", [1, 4]],
+                                            "Deltoid anterior": ["deltoideus_anterior", "_part_", [1, 4]],
+                                            "Supraspinatus": ["My_supraspinatus", "_", [1, 6]],        # On charge les muscles My_supraspinatus
+                                            "Infraspinatus": ["infraspinatus", "_", [1, 6]],
+                                            "Infraspinatus superior": ["infraspinatus", "_", [1, 3]],
+                                            "Infraspinatus inferior": ["infraspinatus", "_", [3, 6]],
+                                            "Serratus anterior": ["serratus_anterior", "_", [1, 6]],
+                                            "Lower trapezius": ["trapezius_scapular", "_part_", [1, 3]],
+                                            "Middle trapezius": ["trapezius_scapular", "_part_", [4, 6]],
+                                            "Upper trapezius": ["trapezius_clavicular", "_part_", [1, 6]],
+                                            "Biceps brachii long head": ["biceps_brachii_caput_longum", "", []],
+                                            "Biceps brachii short head": ["biceps_brachii_caput_breve", "", []],
+                                            "Pectoralis major clavicular": ["pectoralis_major_clavicular", "_part_", [1, 5]],
+                                            "Pectoralis major sternal": ["pectoralis_major_thoracic", "_part_", [1, 10]],
+
+                                            "Pectoralis major": [["pectoralis_major_thoracic", "_part_", [1, 10]],
+                                                                  ["pectoralis_major_clavicular", "_part_", [1, 5]]
+                                                                  ],
+
+                                            "Pectoralis minor": ["pectoralis_minor", "_", [1, 3]],
+                                            "Latissimus dorsi": ["latissimus_dorsi", "_", [1, 11]],
+                                            "Triceps long head": ["Triceps_LH", "_", [1, 2]],
+                                            "Subscapularis": ["subscapularis", "_", [1, 6]],
+                                            "Subscapularis superior": ["subscapularis", "_", [1, 2]],
+                                            "Subscapularis middle": ["subscapularis", "_", [3, 4]],
+                                            "Subscapularis inferior": ["subscapularis", "_", [5, 6]],
+                                            "Teres minor": ["teres_minor", "_", [1, 6]],
+                                            "Teres major": ["teres_major", "_", [1, 6]],
+                                            "Rhomboideus": ["rhomboideus", "_", [1, 3]],
+                                            "Levator scapulae": ["levator_scapulae", "_", [1, 4]],
+                                            "Sternocleidomastoid clavicular": ["Sternocleidomastoid_caput_clavicular", "", []],
+                                            "Sternocleidomastoid sternum": ["Sternocleidomastoid_caput_Sternum", "", []],
+                                            "Coracobrachialis": ["coracobrachialis", "_", [1, 6]]
+                                            }
+
+
 MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
                             "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscles forces [Newton]"},
                             "Fp": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fp", "VariableDescription": "Force musculaire passive [Newton]"},
@@ -118,6 +156,8 @@ ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",  # CHEMIN D'A
 
 Variables = define_variables_to_load(VariableDictionary, MuscleDictionary, MuscleVariableDictionary, ConstantsDictionary)
 
+# Variables avec nouveau wrapping du supra
+Variables_MySupraspinatusWrapping = define_variables_to_load(VariableDictionary, MuscleDictionary_MySupraspinatusWrapping, MuscleVariableDictionary, ConstantsDictionary)
 
 # %% Chargement des fichiers .h5
 
@@ -132,10 +172,11 @@ Files = [
          #  "BS_20mm",
          # "BS_-20mm"
           # "supra_20mm"
-         "r=1",
-         "r=0.8",
-         "r=0.6"
-        
+         # "r=1",
+         # "r=0.8",
+         # "r=0.6"
+        "new_wrap"
+        # "old_wrap"
 
          ]
 
@@ -147,13 +188,18 @@ CaseNames = [
              # "supra_-20mm_BS"
 #             "supra_10mm",
 #             "supra_20mm"
-                "r=1",
-                "r=0.8",
-               "r=0.6"
+               #  "r=1",
+               #  "r=0.8",
+               # "r=0.6"
+                "new_wrap"
+               # "old_wrap"
           
              ]
 
-Results = load_simulation_cases(SaveDataDir, Files, CaseNames, Variables)
+# Results = load_simulation_cases(SaveDataDir, Files, CaseNames, Variables)
+
+# Pour des h5 avec le nouveau wrapping du supra, on change le dernier argument
+Results = load_simulation_cases(SaveDataDir, Files, CaseNames, Variables_MySupraspinatusWrapping)
 
 # Sauvegarde des résultats dans des fichiers .pkl
 save_results_to_file(Results, SaveSimulationsDirectory, "Results")
